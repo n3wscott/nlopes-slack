@@ -36,18 +36,17 @@ func (api *Client) botRequest(ctx context.Context, path string, values url.Value
 }
 
 // GetBotInfo will retrieve the complete bot information
-func (api *Client) GetBotInfo(bot string) (*Bot, error) {
+func (api *Client) GetBotInfo(bot *string) (*Bot, error) {
 	return api.GetBotInfoContext(context.Background(), bot)
 }
 
 // GetBotInfoContext will retrieve the complete bot information using a custom context
-func (api *Client) GetBotInfoContext(ctx context.Context, bot string) (*Bot, error) {
+func (api *Client) GetBotInfoContext(ctx context.Context, bot *string) (*Bot, error) {
 	values := url.Values{
 		"token": {api.token},
 	}
-
-	if bot != "" {
-		values.Add("bot", bot)
+	if bot != nil {
+		values.Set("bot", *bot)
 	}
 
 	response, err := api.botRequest(ctx, "bots.info", values)
