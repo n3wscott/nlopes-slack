@@ -47,13 +47,6 @@ func (api *Client) GetBotInfoContext(ctx context.Context, bot *string) (*Bot, er
 	}
 	if bot != nil {
 		values.Set("bot", *bot)
-<<<<<<< HEAD
-=======
-	}
-
-	if bot != "" {
-		values.Add("bot", bot)
->>>>>>> testing.
 	}
 
 	response, err := api.botRequest(ctx, "bots.info", values)
