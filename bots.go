@@ -2,17 +2,11 @@ package slack
 
 import (
 	"context"
-<<<<<<< HEAD
-=======
-	"errors"
-	"log"
->>>>>>> testing.
 	"net/url"
 )
 
 // Bot contains information about a bot
 type Bot struct {
-<<<<<<< HEAD
 	ID      string   `json:"id"`
 	Name    string   `json:"name"`
 	Deleted bool     `json:"deleted"`
@@ -20,13 +14,6 @@ type Bot struct {
 	AppID   string   `json:"app_id"`
 	Updated JSONTime `json:"updated"`
 	Icons   Icons    `json:"icons"`
-=======
-	ID      string `json:"id"`
-	AppID   string `json:"app_id"`
-	Name    string `json:"name"`
-	Deleted bool   `json:"deleted"`
-	Icons   Icons  `json:"icons"`
->>>>>>> testing.
 }
 
 type botResponseFull struct {
@@ -63,7 +50,6 @@ func (api *Client) GetBotInfoContext(ctx context.Context, bot *string) (*Bot, er
 <<<<<<< HEAD
 =======
 	}
-	log.Printf("values: %+v", values)
 
 	if bot != "" {
 		values.Add("bot", bot)
@@ -74,6 +60,5 @@ func (api *Client) GetBotInfoContext(ctx context.Context, bot *string) (*Bot, er
 	if err != nil {
 		return nil, err
 	}
-	log.Printf("BotResponse: %+v", response)
 	return &response.Bot, nil
 }
