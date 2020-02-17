@@ -3,7 +3,7 @@ package slack
 import (
 	"encoding/json"
 
-	"github.com/pkg/errors"
+	"errors"
 )
 
 type sumtype struct {
@@ -61,7 +61,7 @@ func (b *Blocks) UnmarshalJSON(data []byte) error {
 		case "section":
 			block = &SectionBlock{}
 		case "rich_text":
-			// for now ignore the (complex) content of rich_text blocks until we can fully support it
+			block = &RichTextBlock{}
 			continue
 		default:
 			return errors.New("unsupported block type")
